@@ -1,0 +1,90 @@
+// Examinito Grupo 1.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include "math.h"
+
+using namespace std;
+
+float cubo(float a);
+void poten(float pi);
+float descuento(float a);
+float sueldoneto(float a,float s);
+
+　
+void main()
+{float a,sn,s,pi,desct;
+int opcion;
+	do
+	{cout<<"             Menu           "<<endl;
+	 cout<<"1 Calcular el cubo de un numero"<<endl;
+	 cout<<"2 Calcular la potencia y raiz cuadrada de Pi hasta de 2 hasta 10:"<<endl;
+	 cout<<"3 Calcular el descuento y salario neto"<<endl;
+	 cout<<"Ingrese la opcion que desea"<<endl;
+	 cin>>opcion;
+	 switch(opcion)
+	       {case 1:
+	             {cout<<"Ingrese el numero que quiere el cubo";
+				  cin>>a;
+				  a=cubo(a);
+				  cout<<"El resultado es: "<<a;
+				  break;
+				 }
+				 case 2:
+	             {cout<<"Ingrese el valor de pi";
+				  cin>>pi;
+				  poten (pi);
+				  break;
+				 }
+				 case 3:
+	             {cout<<"Ingrese el salario ganado";
+				  cin>>a;
+				  s=a;
+				  desct=descuento(a);
+				  sn=sueldoneto(s,desct);
+				  cout<<"El descuento es: "<<desct<<endl;
+				  cout<<"El sueldo neto es: "<<sn<<endl;
+				  break;
+				 }
+
+	       }
+
+	}while(opcion<=3);
+	getch();
+}
+
+float cubo(float a)
+{int r;
+ r=powf(a,3);
+ return r;
+}
+
+void poten(float pi)
+{int c,poten,raiz;
+ poten=pi;
+ for(c=2;c<=10;c++)
+    {pi=pi*poten;
+     cout<<"pi^"<<c<<"="<<pi;
+	 raiz=sqrt(pi);
+	 cout<<"La raiz es: "<<raiz;
+    }
+}
+
+float descuento(float a)
+{int dsct;
+ if(a<=1000)
+	 dsct=a*0.10;
+ if((a>1000)&&(a<=2000))
+	 dsct=a*0.15;
+ if(a>2000)
+	 dsct=a*0.18;
+ return dsct;
+}
+
+float sueldoneto (float s,float desct)
+{float sueldoneto;
+ sueldoneto=s-desct;
+ return sueldoneto;
+}
