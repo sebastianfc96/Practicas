@@ -1,0 +1,62 @@
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+
+using namespace std;
+
+int convseg(int h,int m, int s);
+void maymen(int t1,int t2,int &may,int &men);
+void convhrs(int dif,int &hf, int &mf,int &sf);
+
+　
+　
+　
+void main()
+{int h1,m1,s1,h2,m2,s2,t1,t2,may,men,dif,hf,mf,sf;
+ cout<<"Ingresar la primer fecha en el orde: dia, med, ano:"<<endl;
+ cin>>h1;
+ cin>>m1;
+ cin>>s1;
+ cout<<"Ingresar la segunda fecha en el orde: dia, med, ano:"<<endl;
+ cin>>h2;
+ cin>>m2;
+ cin>>s2;
+ t1=convseg(h1,m1,s1);
+ t2=convseg(h2,m2,s2);
+ maymen(t1,t2,may,men);
+ dif=may-men;
+ convhrs(dif,hf,mf,sf);
+ cout<<"La diferencia es:"<<endl;
+ cout<<hf<<" dias"<<endl;
+ cout<<mf<<" mes"<<endl;
+ cout<<sf<<" anos"<<endl;
+ getch();
+}
+
+int convseg(int h,int m,int s)
+{int t=0;
+ t=t+h;
+ t=t+m*30;
+ t=t+s*365;
+ return t;
+}
+
+void maymen(int t1,int t2,int &may,int &men)
+{if(t1>t2)
+   {may=t1;
+   men=t2;
+   }
+ else
+   {may=t2;
+    men=t1;
+   }
+}
+
+void convhrs(int dif,int &hf,int &mf,int &sf)
+{int a,b;
+ sf=dif/360;
+ dif=dif%360;
+ mf=dif/30;
+ dif=dif%30;
+ hf=dif;
+}
