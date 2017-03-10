@@ -1,0 +1,65 @@
+// horas min seg.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+
+using namespace std;
+
+int convseg(int h,int m, int s);
+void maymen(int t1,int t2,int &may,int &men);
+void convhrs(int dif,int &hf, int &mf,int &sf);
+
+　
+　
+　
+void main()
+{int h1,m1,s1,h2,m2,s2,t1,t2,may,men,dif,hf,mf,sf;
+ cout<<"Ingresar la primer hora en el orde: hrs, mins, seg:"<<endl;
+ cin>>h1;
+ cin>>m1;
+ cin>>s1;
+ cout<<"Ingresar la segunda hora en el orde: hrs, mins, seg:"<<endl;
+ cin>>h2;
+ cin>>m2;
+ cin>>s2;
+ t1=convseg(h1,m1,s1);
+ t2=convseg(h2,m2,s2);
+ maymen(t1,t2,may,men);
+ dif=may-men;
+ convhrs(dif,hf,mf,sf);
+ cout<<"La diferencia es:"<<endl;
+ cout<<hf<<"horas"<<endl;
+ cout<<mf<<"minutos"<<endl;
+ cout<<sf<<"segundos"<<endl;
+ getch();
+}
+
+int convseg(int h,int m,int s)
+{int t=0;
+ t=t+h*3600;
+ t=t+m*60;
+ t=t+s;
+ return t;
+}
+
+void maymen(int t1,int t2,int &may,int &men)
+{if(t1>t2)
+   {may=t1;
+   men=t2;
+   }
+ else
+   {may=t2;
+    men=t1;
+   }
+}
+
+void convhrs(int dif,int &hf,int &mf,int &sf)
+{int a,b;
+ hf=dif/3600;
+ dif=dif%3600;
+ mf=dif/60;
+ dif=dif%60;
+ sf=dif;
+}
