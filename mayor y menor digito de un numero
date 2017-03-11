@@ -1,0 +1,29 @@
+// mayor digito de un numero.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+
+using namespace std;
+
+　
+　
+void main()
+{int num,d,may,men;
+ cout<<"Ingrese el numero "<<endl;
+ cin>>num;
+ may=0;
+ men=9;
+ do
+ {d=num%10;
+  if(d>may)
+	  may=d;
+  if(d<men)
+	  men=d;
+  num=num/10;
+ }while(num>0);
+ cout<<"El numero mayor es: "<<may<<endl;
+ cout<<"El numero menor es: "<<men;
+ getch();
+}
