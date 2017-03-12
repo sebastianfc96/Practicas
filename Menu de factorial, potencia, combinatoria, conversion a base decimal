@@ -1,0 +1,125 @@
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include "stdlib.h"
+
+using namespace std;
+
+int factorial(int n);
+float potencia(float b);
+int combinatoria(int x, int r);
+int conv(int b,int num);
+
+void main()
+{
+int n,opcion,fac,x,r,bdecimal,convdecimal,b1,num1,band,dv,nump;
+float b,pot,comb,num;
+
+do{ cout<<"         MENU"<<endl;
+cout<<"(1)   FACTORIAL"<<endl;
+cout<<"(2)   POTENCIA"<<endl;
+cout<<"(3)   COMBINATORIA"<<endl;
+cout<<"(4)   CONVERSION A DECIMAL"<<endl;
+cout<<"(0)   SALIR"<<endl;
+
+cout<<"Ingrese una opcion"<<endl;
+cin>>opcion;
+
+switch(opcion)
+{
+case 1:{
+do{
+cout<<"ingresar un numero para calcular su factorial"<<endl;
+cin>>n;
+}while(n<=0);
+fac=factorial(n);
+cout<<"el factorial es:"<<fac<<endl;
+ break;}
+case 2:{cout<<"Ingrese la base"<<endl;
+cin>>b;
+pot=potencia(b);
+cout<<"la potencia es:"<<pot<<endl;
+break;
+  }
+case 3:{cout<<"combinatoria(x,r)"<<endl;;
+do{
+cout<<"ingrese la variable x (positiva)"<<endl;
+cin>>x;
+}while(x<=0);
+do{
+cout<<"ingrese la variable r (positiva y menor a x)"<<endl;
+cin>>r;
+}while((r<=0)||(r>x));
+comb=combinatoria(x,r);
+cout<<"la combinatoria de("<<x<<","<<r<<")="<<comb<<endl;
+break;
+  }
+case 4:{cout<<"Ingrese la base del numero que va a colocar(2-9)"<<endl;
+	    cin>>b1;
+		do
+		{
+		cout<<"Ingrese el numero que desea transformar a base decimal"<<endl;
+		cin>>num1;
+		nump=num1;
+		band=0;
+		do
+		{dv=num1%10;
+		 nump=nump/10;
+		 if(dv>=b1)
+			 band=1;
+		}while(nump>0);
+		}while(band>=1);
+		bdecimal=conv(b1,num1);
+		cout<<"El numero convertido a base decimal es "<<bdecimal;
+break;
+  }
+case 0:{cout<<"SALIR"<<endl;
+break;}
+default:{cout<<"opcion invalida"<<endl;
+break;}
+}
+}while(opcion!=0);
+getch();
+}
+
+int factorial (int n)
+{int c,fac=1,c1=1;
+ for(c=1;c<=n;c++)
+ {fac=fac*c;
+ }
+ return (fac);
+}
+
+float potencia(float b)
+{ float pot;
+int i;
+pot=b;
+for(i=1;i<2;i++)
+pot=pot*b;
+return (pot);
+}
+
+int combinatoria(int x, int r)
+{ 
+float comb;
+comb=factorial(x)/(factorial(r)*factorial(x-r));
+return(comb);
+}
+int conv(int b,int num)
+{int bdecimal,nd,cd,d,nump;
+ bdecimal=0;
+ nd=0;
+ nump=num;
+ cd=0;
+ do
+	{nump=nump/10;
+	 nd++;
+	}while (nump>0);
+ do
+	{d=num%10;
+	 num=num/10;
+	 bdecimal=bdecimal+d*powf(b,cd);
+	 cd++;
+	}while(cd<=nd);
+	return bdecimal;
+}
