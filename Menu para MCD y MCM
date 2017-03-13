@@ -1,0 +1,73 @@
+// mcd y mcm.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+
+using namespace std;
+
+int maxcd(int a,int b);
+
+void main()
+{int a,b,opcion,mcd,mcm;
+ do
+ {cout<<"           MENU            "<<endl;
+  cout<<" 1 Calcular el mcd de dos numeros"<<endl;
+  cout<<" 2 Calcular el mcm de dos numeros"<<endl;
+  cout<<" 0 Salir"<<endl;
+  cout<<" Ingrese la opcion que desea"<<endl;
+  cin>>opcion;
+  switch(opcion)
+  {case 1:
+	{cout<<"Ingrese los dos numeros del cual quiere calcular el mcd"<<endl;
+	 cin>>a;
+	 cin>>b;
+	 mcd=maxcd(a,b);
+	 cout<<"El mcd es :"<<mcd<<endl;
+	 break;
+	}
+   case 2:
+	{cout<<"Ingrese los dos numeros del cual quiere calcular el mcm"<<endl;
+	 cin>>a;
+	 cin>>b;
+	 mcm=(a*b)/(maxcd(a,b));
+	 cout<<"El mcm es :"<<mcm<<endl;
+	 break;
+	}
+   case 0:
+	   {cout<<"Salir";
+	   break;
+	   }
+   default:
+	   {cout<<"Opcion Invalida";
+		   break;
+	   }
+  }
+ }while(opcion!=0);
+ getch();
+}
+
+int maxcd(int a,int b)
+{int may,men,y=1,i=2;
+ if(a>b)
+	 {may=a;
+	  men=b;
+	 }
+ 
+ else
+	 {may=b;
+	  men=a;
+	 }
+ do
+ {if((may%i==0)&&(men%i==0))
+	 {may=may/i;
+	  men=men/i;
+	  y=y*i;
+	 }
+  else
+	  i++;
+
+ }while(i<=men);
+ return y;
+}
