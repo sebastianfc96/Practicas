@@ -1,0 +1,73 @@
+// matriz invertida.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#define MAX 20
+
+using namespace std;
+
+void cargar_matriz(int A[MAX][MAX],int fil,int col);
+void mostrar_matriz(int A[MAX][MAX],int fil,int col);
+void transponer_matriz(int A[MAX][MAX],int fil,int col,int B[MAX][MAX]);
+
+　
+void main()
+{
+	int fil,col,A[MAX][MAX],B[MAX][MAX];
+
+	do{
+		cout<<"Ingrese la cantidad de columnas de su matriz: ";
+		cin>>col;
+	  }while(col>20);
+	do{
+		cout<<"Ingrese la cantidad de filas de su matriz: ";
+		cin>>fil;
+	  }while(fil>20);
+
+	cargar_matriz(A,fil,col);
+	mostrar_matriz(A,fil,col);
+	cout<<"La matriz transpuesta es: "<<endl;
+	transponer_matriz(A,fil,col,B);
+
+	getch();
+
+}
+
+void cargar_matriz(int A[MAX][MAX],int fil,int col)
+{
+	int i,j;
+	for(i=0;i<fil;i++)
+		{for(j=0;j<col;j++)
+			{cout<<"Ingrese la matriz A["<<i<<"]["<<j<<"]";
+			 cin>>A[i][j];
+			}
+		}
+
+ 
+}
+void mostrar_matriz(int A[MAX][MAX],int fil,int col)
+{
+	int i,j;
+	for(i=0;i<fil;i++)
+		{for(j=0;j<col;j++)
+			{cout<<A[i][j]<<"\t";
+			}
+		cout<<endl;
+		}
+	
+}
+void transponer_matriz(int A[MAX][MAX],int fil,int col,int B[MAX][MAX])
+{
+	int i,j,fil1,col1;
+	fil1=col;
+	col1=fil;
+	for(i=0;i<fil1;i++)
+		{for(j=0;j<col1;j++)
+			{B[i][j]=A[j][i];
+			 cout<<B[i][j]<<"\t";
+			}
+		cout<<endl;
+		}
+}
